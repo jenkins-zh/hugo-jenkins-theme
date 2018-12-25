@@ -12,10 +12,12 @@
       {{ .Content }}
     </div>
     <div class="w4 mv4 center">
-      <a class="f5 db link grow tc v-mid bg-blue white ba b--blue ph3 pv2 br1" href="/blog/">欢迎</a>
+      <a class="f5 db link grow tc v-mid bg-blue white ba b--blue ph3 pv2 br1" href="/wechat/">欢迎</a>
     </div>
+    {{ with .Site.Params.welcome }}
     <p class="f3 fw4 white-90 m0 lh-title pt2 pb3 pv0-ns">
-      技术改变生活，热情铸就未来！
+      {{ . }}
     </p>
+    {{ end }}
   </section>
 </header>
