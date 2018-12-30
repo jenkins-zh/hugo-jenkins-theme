@@ -33,7 +33,9 @@
     "tachyons": "^4.7.0",
     "webpack": "^2.3.3",
     "lodash": ">=4.17.5",
-    "macaddress": ">=0.2.9"
+    "macaddress": ">=0.2.9",
+    "debug": ">=2.6.9",
+    "randomatic": ">=3.0.0"
   },
   "dependencies": {}
 }
