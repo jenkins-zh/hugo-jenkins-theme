@@ -1,4 +1,8 @@
 {{ $author := .context.Params.author }}
+{{ $translator := .context.Params.translator }}
+{{ if $translator }}
+{{ $author = $translator }}
+{{ end }}
 {{ if $author }}
   <aside class="mw5 br3 mv3 nested-links">
     {{ $urlPre := "https://api.github.com" }}
@@ -14,7 +18,7 @@
           {{ $user_json.bio | htmlEscape }}
         </p>
       {{ end }}
-      <a href="{{ $user_json.html_url }}" class="link dim v-mid dib">
+      <a href="{{ $user_json.html_url }}" target="_blank" class="link dim v-mid dib">
         {{ partial "svg/github-squared.svg" (dict "fill" "gray" "width" "16" "height" "18") }}
       </a>
   </aside>
