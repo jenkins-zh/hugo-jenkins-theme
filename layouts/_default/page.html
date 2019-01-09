@@ -36,6 +36,12 @@
   {{ .Content }}
 </div>
 
+{{ if ne .Params.jenkinsIssues "" }}
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+{{- partial "components/jira.html" (dict "context" .) -}}
+</aside>
+{{ end }}
+
 {{ if .Site.Params.Comments.Utterances.Enable }}
 {{ if ne .Params.comment false }}
 <script src="https://utteranc.es/client.js"
