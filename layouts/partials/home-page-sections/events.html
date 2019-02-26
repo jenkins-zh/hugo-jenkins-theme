@@ -9,7 +9,7 @@
           {{ $img := $p.Params.poster }}
           {{ with $img }}
           <a href="{{ $p.RelPermalink}}" class="tile lazyload cover dib f4 ml1 mr4 bg-black relative mw-100 shadow-5">
-            <img width="250px" src="{{$img}}"></img>
+            <img width="400px" height="200px" src="{{$img}}"></img>
           </a>
           {{ end }}
         {{end}}
