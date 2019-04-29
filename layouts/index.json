@@ -4,9 +4,15 @@
     {
         "uri": "{{ $page.Permalink }}",
         "title": "{{ htmlEscape $page.Title}}",
+        "type": "{{ htmlEscape $page.Type}}",
+        "date": "{{ htmlEscape $page.Date}}",
         "tags": [{{ range $tindex, $tag := $page.Params.tags }}{{ if $tindex }}, {{ end }}"{{ $tag| htmlEscape }}"{{ end }}],
         "description": "{{ htmlEscape .Description}}",
-        "content": {{$page.Plain | jsonify}}
+        "content": {{$page.Plain | jsonify}},
+        "auhtor": "{{ htmlEscape $page.Params.author}}",
+        "translator": "{{ htmlEscape $page.Params.translator}}",
+        "original": "{{ htmlEscape $page.Params.original}}",
+        "poster": "{{ htmlEscape $page.Params.poster}}"
     }
-{{- end -}}
+    {{- end -}}
 {{- end -}}]
