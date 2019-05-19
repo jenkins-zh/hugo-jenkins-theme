@@ -22,7 +22,11 @@
         {{ $interior_classes := .context.Site.Params.flex_box_interior_classes }}
         <section class="flex-ns flex-wrap justify-between w-100">
           {{ range $section_to_display }}
+<<<<<<< HEAD
           {{ if le .Date.Unix now.Unix | or (eq (getenv "HUGO_PREVIEW") "true") }}
+=======
+          {{ if le .Date.Unix now.Unix | or (eq (getenv "PREVIEW") "true") }}
+>>>>>>> 43d7e22ab44947090fc54d49f24cba67d5b99e62
             {{ partial "boxes-section-summaries" (dict "context" . "classes" $interior_classes "fullcontent" true) }}
             {{ end }}
           {{ end }}
