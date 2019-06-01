@@ -3,7 +3,4 @@
   <span class="nl3 child">{{ partial "svg/link-permalink.svg" (dict "size" "14px") }}</span>
     “{{ .Title }}”
   </a> 更新于：{{ .Lastmod.Format "January 2, 2006" }}{{ with .GitInfo }}: <a class="hide-child link primary-color" href="{{$.Site.Params.ghrepo}}/commit/{{ .Hash }}">{{ .Subject }} ({{ .AbbreviatedHash }})</a>{{end }}
-  <div>
-    原文作者：<a href="{{.Params.original}}" target="_blank">{{.Params.author}}</a>
-  </div>
 </h6>

@@ -40,22 +40,30 @@ if(window.location.search == "?copy=true") {
 }
 
 function copyMe(){
+  var tempElements = [];
   var doc = document.getElementsByClassName('documentation-copy')[0];
+  var articleHeader = document.createElement("div");
+  tempElements.push(articleHeader);
+  articleHeader.innerHTML = "本文首发于：<a href=\"{{.RelPermalink | absURL}}\">Jenkins 中文社区</a>";
+
+  // select elements
   var rangeToSelect = document.createRange();
   rangeToSelect.selectNodeContents(doc);
 
   var data = window.getSelection();
   data.addRange(rangeToSelect);
 
-  var div = document.createElement("div");
-  div.innerHTML = "本文首发于：<a href=\"{{.RelPermalink | absURL}}\">Jenkins 中文社区</a>";
-  data.getRangeAt(0).insertNode(div);
+  tempElements.push(appendArticleFooter(data.getRangeAt(0)));
+  data.getRangeAt(0).insertNode(articleHeader);
   document.execCommand("copy", true, null);
 
-  div.remove();
+  // cleanup the temporary elements
+  for(var i in tempElements) {
+    tempElements[i].remove();
+  }
   clearSelection();
 
-  hideCopyBut();
+  hideCopyBut();//
 }
 
 function clearSelection(){
@@ -68,6 +76,41 @@ function showCopyBut() {
 
 function hideCopyBut() {
   document.getElementById('copyMe').style="display:none";
+}
+
+function appendArticleFooter(range) {
+  var articleFooter = createArticleFooter();
+  range.insertNode(articleFooter);
+  return articleFooter;
+}
+
+function createArticleFooter() {
+  var articleFooter = document.createElement("div");
+  var authors = document.getElementsByClassName("author");
+  var originalAuthors = document.getElementsByClassName("originalAuthor");
+  var originalLinks = document.getElementsByClassName("originalLink");
+  var articleFooterHtml = "";
+  var isTranslated = false;
+  if(originalAuthors.length > 0){
+    articleFooterHtml += "<div>";
+    if(originalLinks.length > 0){
+      articleFooterHtml += "<a href=" + originalLinks[0].innerText + ">原文链接</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+    articleFooterHtml += "作者：" + originalAuthors[0].innerText;
+    articleFooterHtml += "</div>";
+    isTranslated = true;
+  }
+  if(authors.length > 0){
+    articleFooterHtml += "<div>";
+    if(isTranslated) {
+      articleFooterHtml += "译者：" + authors[0].innerText;
+    } else {
+      articleFooterHtml += "作者：" + authors[0].innerText;
+    }
+    articleFooterHtml += "</div>";
+  }
+  articleFooter.innerHTML = articleFooterHtml;
+  return articleFooter;
 }
 </script>
 {{ end }}
