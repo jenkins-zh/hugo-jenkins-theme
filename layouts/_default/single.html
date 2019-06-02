@@ -41,7 +41,13 @@ if(window.location.search == "?copy=true") {
 
 function copyMe(){
   var tempElements = [];
+
+  var logoZone = document.createElement("div");
+  logoZone.innerHTML = "<a href=\"https://jenkins-zh.cn\"><img width=\"520\" src=\"https://jenkins-zh.cn/wechat/images/grey-backgroud-jenkins-slogan.jpg\"/></a>";
+  document.getElementById('prose').append(logoZone);
+  tempElements.push(logoZone);
   var doc = document.getElementsByClassName('documentation-copy')[0];
+
   var articleHeader = document.createElement("div");
   tempElements.push(articleHeader);
   articleHeader.innerHTML = "本文首发于：<a href=\"{{.RelPermalink | absURL}}\">Jenkins 中文社区</a>";
