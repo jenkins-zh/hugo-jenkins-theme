@@ -36,3 +36,6 @@ other = "Source"
 
 [copy]
 other = "Copy"
+
+[menu]
+other = "Menu"

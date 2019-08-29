@@ -36,3 +36,6 @@ other = "原文件"
 
 [copy]
 other = "拷贝"
+
+[menu]
+other = "菜单"
